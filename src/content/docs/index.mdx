@@ -1,87 +1,57 @@
 ---
 title: GATA HUB Documentation
-description: Cosmos validators, IBC relays, public goods, yield-bearing NFT collections and the GATA DAO — all in one place.
+description: Cosmos validators, IBC relays, public goods, yield-bearing NFT collections and the GATA DAO.
 template: splash
-hero:
-  tagline: Infrastructure, real yield and community governance across the Cosmos ecosystem.
-  image:
-    dark: ../../assets/logo-dark.png
-    light: ../../assets/logo-light.png
-  actions:
-    - text: What is GATA HUB?
-      link: /gata-hub
-      icon: right-arrow
-      variant: primary
-    - text: Browse the NFT collections
-      link: /nfts
-      icon: external
-      variant: minimal
+editUrl: false
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+<div class="home">
 
-## Start here
+<div class="home-hero">
+  <h1>Documentation for <em>GATA HUB</em></h1>
+  <p>Infrastructure, real yield and community governance across the Cosmos ecosystem.</p>
+  <div class="home-actions">
+    <a class="primary" href="/gata-hub">What is GATA HUB?</a>
+    <a class="ghost" href="/nfts">NFT collections</a>
+    <a class="ghost" href="/guides">New to Cosmos?</a>
+  </div>
+</div>
 
-<CardGrid stagger>
-  <Card title="New to GATA?" icon="rocket">
-    Read [What is GATA HUB](/gata-hub) for the short version, then
-    [At a Glance](/gata-hub/at-a-glance) for the map of everything we run.
-  </Card>
-  <Card title="Hold a GATA NFT?" icon="star">
-    Every collection and its monthly reward epochs are listed under
-    [NFT Collections](/nfts). Reward histories live on each collection's page.
-  </Card>
-  <Card title="Want to earn yield?" icon="approve-check">
-    [GATA Yield DAO](/yield-dao) covers yGATA, tokenomics and how revenue is
-    split each epoch.
-  </Card>
-  <Card title="New to Cosmos?" icon="open-book">
-    The [Guides](/guides) section walks through wallets, staking, IBC transfers
-    and governance from scratch.
-  </Card>
-</CardGrid>
+<h2>Sections</h2>
 
-## The sections
+<div class="home-grid">
+  <a href="/gata-hub">
+    <strong>GATA HUB</strong>
+    <span>What we do, the roadmap, and general FAQs.</span>
+  </a>
+  <a href="/infrastructure/validators">
+    <strong>Infrastructure</strong>
+    <span>Validators, slash protection, relays and endpoints.</span>
+  </a>
+  <a href="/nfts">
+    <strong>NFT Collections</strong>
+    <span>Genesis Cats, Gorillas, Paws, Crocs, PengOnes and more.</span>
+  </a>
+  <a href="/dao">
+    <strong>GATA DAO</strong>
+    <span>Governance, treasury, delegations and the constitution.</span>
+  </a>
+  <a href="/yield-dao">
+    <strong>GATA Yield DAO</strong>
+    <span>yGATA, tokenomics and epoch revenue distribution.</span>
+  </a>
+  <a href="/reward-app">
+    <strong>Reward App</strong>
+    <span>Claim your epoch rewards, step by step.</span>
+  </a>
+  <a href="/cosmos">
+    <strong>Cosmos Ecosystem</strong>
+    <span>IBC, the Interchain Stack and Interchain Security.</span>
+  </a>
+  <a href="/guides">
+    <strong>Guides</strong>
+    <span>Wallets, staking, IBC transfers and voting.</span>
+  </a>
+</div>
 
-<CardGrid>
-  <LinkCard
-    title="GATA HUB"
-    href="/gata-hub"
-    description="What we do, the roadmap from 2022 to 2026, and general FAQs."
-  />
-  <LinkCard
-    title="Infrastructure"
-    href="/infrastructure/validators"
-    description="Validators, slash protection, testnets, IBC relays and public endpoints."
-  />
-  <LinkCard
-    title="NFT Collections"
-    href="/nfts"
-    description="Genesis Cats, Yield Gorilla, Paws, Crocs, PengOnes, Walkers and Pixel."
-  />
-  <LinkCard
-    title="GATA DAO"
-    href="/dao"
-    description="On-chain governance, treasury, delegations and the full constitution."
-  />
-  <LinkCard
-    title="GATA Yield DAO"
-    href="/yield-dao"
-    description="yGATA, tokenomics and epoch revenue distribution."
-  />
-  <LinkCard
-    title="Reward App"
-    href="/reward-app"
-    description="Claim your epoch rewards — step-by-step, with cautions and FAQs."
-  />
-  <LinkCard
-    title="Cosmos Ecosystem"
-    href="/cosmos"
-    description="Reference material on IBC, the Interchain Stack and Interchain Security."
-  />
-  <LinkCard
-    title="Guides"
-    href="/guides"
-    description="Practical how-tos: wallets, staking, IBC transfers, voting."
-  />
-</CardGrid>
+</div>

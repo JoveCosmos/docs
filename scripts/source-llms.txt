@@ -1,0 +1,100 @@
+# Welcome to GATA HUB
+
+## GATA HUB
+
+- [GATA HUB](https://docs.gatahub.zone/g/gata-hub.md): Introducing GATA HUB
+- [Summary](https://docs.gatahub.zone/g/gatahub/summary.md): GATA HUB provides infrastructural support like validators, RPCs and IBC relays and manages different types of NFT collections that are providing value to their holders.
+- [Reward App](https://docs.gatahub.zone/g/gatahub/reward-app.md)
+- [User Guide](https://docs.gatahub.zone/g/gatahub/reward-app/user-guide.md): A step-by-step guide to using GATA HUB. If it's your first time, start at the top.
+- [Caution](https://docs.gatahub.zone/g/gatahub/reward-app/caution.md)
+- [FAQ](https://docs.gatahub.zone/g/gatahub/reward-app/faq.md)
+- [GATA Validators](https://docs.gatahub.zone/g/gatahub/gata-validators.md): GATA HUB validators are operated by the experienced GATA tech team for multiple years now. All validators are co-owned by GATA NFT holders and slash protected - backed by GATA slashing fund.
+- [Slash Protection Policy](https://docs.gatahub.zone/g/gatahub/gata-validators/slash-protection-policy.md): GATA HUB validators are slash-protected. Learn more about GATA HUB's slash protection policy.
+- [GATA Testnet Validators](https://docs.gatahub.zone/g/gatahub/gata-validators/gata-testnet-validators.md): To support the evolution of Cosmos SDK based networks we provide infrastructural support by providing validator operations in testnets.
+- [Foundation Delegations](https://docs.gatahub.zone/g/gatahub/gata-validators/foundation-delegations.md): Record of Foundation Delegations for GATA HUB
+- [Public goods](https://docs.gatahub.zone/g/gatahub/public-goods.md)
+- [GATA Relays](https://docs.gatahub.zone/g/gatahub/public-goods/gata-relays.md): More info about GATA's various relay operations.
+- [End points](https://docs.gatahub.zone/g/gatahub/public-goods/end-points.md)
+- [GATA Yield DAO](https://docs.gatahub.zone/g/gatahub/gata-yield-dao.md): A Community-Owned Token yGATA
+- [About](https://docs.gatahub.zone/g/gatahub/gata-yield-dao/about.md): GATA Yield DAO is  dedicated to managing and optimizing yield for yGATA token holders. It combines DeFi strategies, community-driven governance, and gamified rewards to maximize value and incentives.
+- [Tokenomics](https://docs.gatahub.zone/g/gatahub/gata-yield-dao/tokenomics.md): Details about token distribution of yGATA a participation token of GATA Yield DAO.
+- [Revenue Distribution](https://docs.gatahub.zone/g/gatahub/gata-yield-dao/revenue-distribution.md): Epoch rewards of GATA Yield DAO
+- [GATA NFTs](https://docs.gatahub.zone/g/gatahub/gata-nfts.md): The summary of GATA Yield bearing NFTs
+- [Genesis Collection](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection.md): Overview of GATA NFTs that provide DAO membership and monthly GATA epoch rewards.
+- [DAO Revenue Distribution](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection/dao-revenue-distribution.md): Details about GATA's revenue distribution.
+- [DAO Revenue Share model](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection/dao-revenue-distribution/dao-revenue-share-model.md): Overview & illustration of GATA's revenue flow model
+- [Yield Gorilla](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-gorilla.md): Yield Gorillas (also called YGs) are the 1st collection of GATA's Yield Series.
+- [YG Asset Allocation](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-gorilla/yg-asset-allocation.md): Last updated August 8, 2025
+- [YG Reward Distributions](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-gorilla/yg-reward-distributions.md): Overview of all Yield Gorillas epoch rewards to holders.
+- [YG & Yield Concept](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-gorilla/yg-and-yield-concept.md)
+- [Yield Paws](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-paws.md): Let your kitties work for you: Yield Paws provide you with revenue from various DeFi activities, staking rewards & private sale ventures - all without lifting a single paw. The second of Yield series.
+- [YP Reward Distribution](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-paws/yp-reward-distribution.md)
+- [Yield Crocs](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-crocs.md): Your friendly neighborhood crocs provide you with monthly epoch rewards in $PHOTON. Earn passive income from various DeFi activities managed by GATA.
+- [YC's Assets](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-crocs/ycs-assets.md)
+- [YC Reward Distribution](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-crocs/yc-reward-distribution.md)
+- [PengOnes](https://docs.gatahub.zone/g/gatahub/gata-nfts/pengones.md): PengOnes are community-powered, yield-infused penguins born in the icy intersection of GATA’s history, AtomOne’s future, and Stargaze’s creativity.
+- [Yield Walkers](https://docs.gatahub.zone/g/gatahub/gata-nfts/yield-walkers.md)
+- [GATA Pixel](https://docs.gatahub.zone/g/gatahub/gata-nfts/gata-pixel.md)
+- [NFT Souvenirs](https://docs.gatahub.zone/g/gatahub/gata-nfts/nft-souvenirs.md): GATA NFT Souvenires are a series of side collections to celebrate important events in GATA and/or partner blockchains. GATA NFT Souvenirs do not provide DAO membership.
+- [Genesis Collection](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1.md)
+- [On Chain GATA DAO](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/on-chain-gata-dao.md): On chain GATA DAO powered by DAO DAO
+- [GATA DAO Treasury](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-dao-treasury.md): Total assets/tokens present in the DAO treasury.
+- [GATA DAO Staking/Delegations](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-dao-staking-delegations.md): GATA DAO manages staked assets of DAO Treasury across Cosmos, adding rewards to revenue.
+- [Validator funding](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/validator-funding.md): GATA HUB Validators are funded by GATA DAO, In an effort to make whole GATA DAO operations self sustainable GATA DAO community passed a vote to fund validators each month with 30% of the revenue.
+- [GATA Constitution](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution.md): This section contains a transparent record of all GATA DAO governance proposals.
+- [Gov. Proposal 1](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-1.md)
+- [Gov. Proposal 2](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-2.md)
+- [Gov. Proposal 3](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-3.md)
+- [Gov. Proposal 4](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-4.md)
+- [Gov. Proposal 5](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-5.md)
+- [Gov. Proposal 6](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-6.md)
+- [Gov. Proposal 7](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-7.md)
+- [Gov. Proposal 8](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-8.md)
+- [Gov. Proposal 9](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-9.md)
+- [Gov. Proposal 10](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-10.md)
+- [Gov. Proposal 11](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-11.md)
+- [Gov. Proposal 12](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-12.md)
+- [Gov. Proposal 13](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-13.md)
+- [Gov. Proposal 14](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/gata-constitution/gov.-proposal-14.md): Shut down the Passage validator and use the resources to start the Stargaze validator
+- [GATA DAO FAQs](https://docs.gatahub.zone/g/gatahub/gata-nfts/genesis-collection-1/faqs.md): Important and frequently asked questions.
+- [GATA HUB Road Map](https://docs.gatahub.zone/g/gatahub/gata-hub-road-map.md)
+- [2026 Roadmap](https://docs.gatahub.zone/g/gatahub/gata-hub-road-map/2026-roadmap.md)
+- [2025 Recap](https://docs.gatahub.zone/g/gatahub/gata-hub-road-map/2025-recap.md)
+- [2024 Recap](https://docs.gatahub.zone/g/gatahub/gata-hub-road-map/2024-recap.md): See the list of perpetual task for day to day expansion
+- [2023 Recap](https://docs.gatahub.zone/g/gatahub/gata-hub-road-map/2023-recap.md): Major achievements of GATA DAO in 2023.
+- [2022 Recap](https://docs.gatahub.zone/g/gatahub/gata-hub-road-map/2022-recap.md)
+- [GATA HUB FAQs](https://docs.gatahub.zone/g/gatahub/gata-hub-faqs.md): Frequently asked questions about GATA HUB
+- [Introduction to Cosmos](https://docs.gatahub.zone/g/cosmos-ecosystem/introduction-to-cosmos.md)
+- [IBC Zones](https://docs.gatahub.zone/g/cosmos-ecosystem/introduction-to-cosmos/ibc-zones.md): Independent Zones in Internet of Blockchain
+- [Cosmos HUB](https://docs.gatahub.zone/g/cosmos-ecosystem/introduction-to-cosmos/ibc-zones/cosmos-hub.md): A Beginner’s Guide to the ATOM Token in the Cosmos Hub
+- [AtomOne](https://docs.gatahub.zone/g/cosmos-ecosystem/introduction-to-cosmos/ibc-zones/atomone.md): A New Chapter in Cosmos
+- [Photon](https://docs.gatahub.zone/g/cosmos-ecosystem/introduction-to-cosmos/ibc-zones/atomone/photon.md)
+- [Interoperability](https://docs.gatahub.zone/g/cosmos-ecosystem/introduction-to-cosmos/interoperability.md): Interoperability in Cosmos
+- [How to Cosmos](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos.md): Your Gateway to Safe and Smart Cosmos Wallet Usage
+- [Creating and Securing Your Cosmos Wallet](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/creating-and-securing-your-cosmos-wallet.md)
+- [Keplr Wallet](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/creating-and-securing-your-cosmos-wallet/keplr-wallet.md): What is Keplr?
+- [Leap Wallet](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/creating-and-securing-your-cosmos-wallet/leap-wallet.md): The Super Wallet‍ for Web3 🐸
+- [Staking your Assets via Keplr Wallet](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/creating-and-securing-your-cosmos-wallet/staking-your-assets-via-keplr-wallet.md)
+- [Securing your Wallet](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/creating-and-securing-your-cosmos-wallet/securing-your-wallet.md): How to Secure Your Web3 Wallets: A Comprehensive Guide
+- [Metamask Snap](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/creating-and-securing-your-cosmos-wallet/metamask-snap.md): How to use Metamask with Cosmos-/IBC-based dApps
+- [IBC - Inter-Blockchain Communication](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/ibc-inter-blockchain-communication.md): A Comprehensive Guide to IBC (Inter-Blockchain Communication) and Secure Usage
+- [Step by Step guide to IBC](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/ibc-inter-blockchain-communication/step-by-step-guide-to-ibc.md)
+- [Participation in Cosmos Governance](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/participation-in-cosmos-governance.md): A Guide to Benefits and Impact of Governance Participation in Cosmos
+- [Choosing a validator](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/participation-in-cosmos-governance/choosing-a-validator.md): A Comprehensive Guide on Validator Selection
+- [Cosmos Governance](https://docs.gatahub.zone/g/cosmos-ecosystem/how-to-cosmos/participation-in-cosmos-governance/cosmos-governance.md): Understanding Cosmos Governance: The Heartbeat of Decentralization
+- [What is the Interchain?](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain.md)
+- [A whole universe](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/a-whole-universe.md): Discover opportunities - from tokens and wallets to apps and services
+- [The Cosmos SDK](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/the-cosmos-sdk.md): Customizable and interoperable blockchain development
+- [IBC](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/ibc.md): The Inter-Blockchain Communication Protocol (IBC)
+- [The Cosmos Hub](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/the-cosmos-hub.md)
+- [Ignite CLI](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/ignite-cli.md): Building application-specific blockchains with one command
+- [CosmWasm](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/cosmwasm.md): CosmWasm - multi-chain smart contracts
+- [Frameworks and SDKs](https://docs.gatahub.zone/g/cosmos-ecosystem/what-is-the-interchain/frameworks-and-sdks.md): The possibility of using alternative blockchain frameworks and SDKs
+- [ICS](https://docs.gatahub.zone/g/cosmos-ecosystem/ics.md): All about Interchain Security (ICS) protocols
+- [Atom Economic Zone (AEZ)](https://docs.gatahub.zone/g/cosmos-ecosystem/ics/atom-economic-zone-aez.md)
+- [Stride](https://docs.gatahub.zone/g/cosmos-ecosystem/ics/atom-economic-zone-aez/stride.md): Liquidity for staked tokens
+- [Neutron](https://docs.gatahub.zone/g/cosmos-ecosystem/ics/atom-economic-zone-aez/neutron.md): Seamless integration of Smart Contracts via CosmWasm
+- [ICS 2.0 PSS ( Partial Set security)](https://docs.gatahub.zone/g/cosmos-ecosystem/ics/ics-2.0-pss-partial-set-security.md)
+- [Elys Network](https://docs.gatahub.zone/g/cosmos-ecosystem/ics/ics-2.0-pss-partial-set-security/elys-network.md)
+- [Zealy (Formerly Crew3)](https://docs.gatahub.zone/g/whats-cooking-in-community/zealy-formerly-crew3.md): Community Engagement - Organic Growth
+- [Disclaimer](https://docs.gatahub.zone/g/whats-cooking-in-community/disclaimer.md)

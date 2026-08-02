@@ -1,0 +1,17 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# scraped GitBook source (provenance only, not part of the site)
+_raw/
+llms.txt
+urls.txt
+
+# logs & env
+*.log
+.env
+.env.production
+.DS_Store

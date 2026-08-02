@@ -1,0 +1,25 @@
+---
+title: "Zealy"
+description: "Community Engagement - Organic Growth"
+---
+
+At GATA, community building is one of the top priorities. GATA is now expanding in terms of operations and a better reach to various streams. Hence, keeping the community spirit intact, especially during the dry spell in the crypto space.
+
+GATA identified [Zealy](https://zealy.io/cw/gatadao/questboard), a community-building platform for web3 communities. It was a perfect match. [Zealy](https://zealy.io/cw/gatadao/questboard)  allows us to create engagement tasks that keep the members involved and help expand the projects' community network. The tasks are easy and fun to perform. Community members also get rewarded with recognition points
+
+How does this help the GATA community?\
+As said earlier, community building is one of the top priorities for GATA DAO. The [Zealy](https://zealy.io/cw/gatadao/questboard) tasks helps the DAO to recognize contributors based on contributions they make and let the DAO reward them on pro-rata basis (have a look at the [leaderboard ](https://zealy.io/cw/gatadao/leaderboard)to see the top contributors).
+
+This approach has aspects of (addition to the fun part): \
+\-  Using internal forces to tell external forces about GATA\
+\-  Rewarding the efforts of GATA members.
+
+The [Zealy](https://zealy.io/cw/gatadao/questboard) quests enable DAO in the calculation of rewards that are and will be distributed. Rewards to the member of the community, both holders of the NFTs and delegators to the GATA validators, include airdrops, whitelists, NFTs and much more.
+
+*For a* *summary of rewards click* [*here*](https://medium.com/gatadao/gata-dao-evolution-3768fb8cf55d)*.*
+
+*For ongoing developments in the* [*Zealy*](https://zealy.io/cw/gatadao/questboard) *quests and queries head to GATA's* [*discord*](https://discord.com/invite/n2FWxvwWPE)*.*
+
+:::note
+*`Join GATA's`<mark style="color:blue;">`discord`</mark>`even if you do not delegate to GATA validators or own GATA NFTs, there might be some quests that can win you rewards.`*
+:::

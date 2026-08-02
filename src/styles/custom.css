@@ -1,0 +1,99 @@
+/* GATA HUB docs theme.
+   Starlight exposes its palette as CSS custom properties, so the whole look is
+   set by overriding the accent + gray ramps rather than restyling components. */
+
+:root {
+  /* accent: GATA's warm amber, tuned for AA contrast on both themes */
+  --sl-color-accent-low: #3b2a06;
+  --sl-color-accent: #b8860b;
+  --sl-color-accent-high: #f2c14e;
+
+  --sl-color-gray-1: #eceef2;
+  --sl-color-gray-2: #c0c2c7;
+  --sl-color-gray-3: #888b96;
+  --sl-color-gray-4: #545861;
+  --sl-color-gray-5: #353841;
+  --sl-color-gray-6: #24272f;
+  --sl-color-black: #17181c;
+
+  --sl-content-width: 50rem;
+}
+
+:root[data-theme="light"] {
+  --sl-color-accent-low: #fdf1cf;
+  --sl-color-accent: #9a6f05;
+  --sl-color-accent-high: #4a3502;
+
+  --sl-color-gray-1: #24272f;
+  --sl-color-gray-2: #444751;
+  --sl-color-gray-3: #6a6d78;
+  --sl-color-gray-4: #9a9da8;
+  --sl-color-gray-5: #d0d2d9;
+  --sl-color-gray-6: #eceef2;
+  --sl-color-gray-7: #f6f7f9;
+  --sl-color-black: #ffffff;
+}
+
+/* ---------------------------------------------------------------- content */
+
+/* Screenshots and diagrams carried over from GitBook are full-bleed PNGs; give
+   them a frame so they read as figures rather than floating artwork. */
+.sl-markdown-content img:not(.not-content img) {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  display: block;
+  margin-inline: auto;
+}
+
+/* Many pages carry wide reward/distribution tables. Let them scroll on their
+   own instead of forcing the page body to scroll sideways. */
+.sl-markdown-content table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+  border-collapse: collapse;
+  font-size: var(--sl-text-sm);
+}
+
+.sl-markdown-content th,
+.sl-markdown-content td {
+  border: 1px solid var(--sl-color-gray-5);
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.sl-markdown-content thead th {
+  background: var(--sl-color-gray-6);
+  position: sticky;
+  top: 0;
+}
+
+/* Collapsed translation blocks (`German/Deutsch — …`) appear on ~20 pages. */
+.sl-markdown-content details {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-block: 1rem;
+}
+
+.sl-markdown-content details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--sl-color-gray-2);
+}
+
+.video-embed {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  margin-block: 1.5rem;
+}
+
+/* --------------------------------------------------------------- homepage */
+
+.hero-tagline {
+  font-size: var(--sl-text-lg);
+  color: var(--sl-color-gray-2);
+}

@@ -1,0 +1,22 @@
+[Unit]
+Description=Build and publish docs.gatahub.zone from git
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=deploy
+Group=deploy
+WorkingDirectory=/srv/gata-docs/repo
+Environment=NODE_ENV=production
+ExecStart=/srv/gata-docs/repo/deploy/deploy.sh
+TimeoutStartSec=900
+
+# the deploy only ever needs to touch its own tree
+PrivateTmp=true
+ProtectSystem=full
+NoNewPrivileges=true
+ReadWritePaths=/srv/gata-docs
+
+[Install]
+WantedBy=multi-user.target

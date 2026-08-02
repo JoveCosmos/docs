@@ -1,0 +1,26 @@
+{
+  "name": "gatahub-docs",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "convert": "node scripts/convert.mjs",
+    "audit": "node scripts/audit.mjs",
+    "build:check": "astro build && node scripts/audit.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.36.0",
+    "astro": "^5.15.0",
+    "sharp": "^0.34.0"
+  },
+  "allowScripts": {
+    "esbuild@0.27.7": true,
+    "esbuild@0.25.12": true,
+    "sharp@0.34.5": true
+  }
+}

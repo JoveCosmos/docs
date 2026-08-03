@@ -271,10 +271,78 @@ header.header {
   margin-block: 1.5rem;
 }
 
+/* --------------------------------------------------------- theme toggle */
+
+.gata-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--gata-line);
+  border-radius: 999px;
+  background: var(--gata-surface);
+  color: var(--gata-muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.gata-theme-toggle:hover {
+  color: var(--gata-pink);
+  border-color: color-mix(in srgb, var(--gata-pink) 45%, transparent);
+  background: var(--gata-surface-2);
+}
+
+.gata-theme-toggle:focus-visible {
+  outline: 2px solid var(--gata-pink);
+  outline-offset: 2px;
+}
+
+.gata-theme-toggle svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Show the icon for the mode the button switches *to*. */
+.gata-theme-toggle .icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .gata-theme-toggle .icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .gata-theme-toggle .icon-moon {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* --------------------------------------------------------------- homepage */
 
 .home {
   max-width: 52rem;
+}
+
+/* The splash template still emits the frontmatter title as an <h1>. It stays in
+   the DOM as the page's accessible heading, but the homepage leads with the
+   tagline instead, so it is not shown. */
+main:has(.home) h1#_top {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .home-hero {
@@ -283,27 +351,17 @@ header.header {
   margin-bottom: 2.5rem;
 }
 
-.home-hero h1 {
+/* With the headings removed, the tagline carries the top of the page, so it
+   takes the display face rather than sitting at body size. */
+.home-hero .home-lead {
   font-family: var(--gata-serif);
   font-weight: 400;
-  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.4rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 0.75rem;
+  font-size: clamp(1.7rem, 1.3rem + 1.6vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   color: var(--gata-text);
-}
-
-.home-hero h1 em {
-  font-style: italic;
-  color: var(--gata-pink);
-}
-
-.home-hero p {
-  font-size: 1.0625rem;
-  color: var(--gata-muted);
   margin: 0 0 1.75rem;
-  max-width: 34rem;
-  line-height: 1.55;
+  max-width: 30rem;
 }
 
 .home-actions {

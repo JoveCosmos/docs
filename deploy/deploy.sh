@@ -11,9 +11,13 @@
 #
 set -euo pipefail
 
+# The build workspace stays private under /srv (the repo, node_modules and any
+# future secrets). Only the finished output is published under /var/www, which
+# is the one tree nginx can read. That split is why /srv/gata-docs can keep the
+# same 750 permissions as the other services on this box.
 REPO_DIR="${REPO_DIR:-/srv/gata-docs/repo}"
-RELEASES_DIR="${RELEASES_DIR:-/srv/gata-docs/releases}"
-CURRENT_LINK="${CURRENT_LINK:-/srv/gata-docs/current}"
+RELEASES_DIR="${RELEASES_DIR:-/var/www/gata-docs/releases}"
+CURRENT_LINK="${CURRENT_LINK:-/var/www/gata-docs/current}"
 LOCK_FILE="${LOCK_FILE:-/srv/gata-docs/.deploy.lock}"
 BRANCH="${BRANCH:-main}"
 KEEP_RELEASES="${KEEP_RELEASES:-5}"

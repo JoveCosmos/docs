@@ -1,176 +1,204 @@
 # Server setup — docs.gatahub.zone
 
-One-time setup for a dedicated `gatadocs` user that pulls from the private repo,
-builds, and serves the result through nginx over HTTPS.
+One-time setup on the existing box (Ubuntu 24.04, nginx 1.24, Node 20, certbot
+2.9 — all already installed).
 
-Adjust these to match the convention your other services use:
+Follows the conventions the other services use: a single-word `nologin` service
+user with its home under `/srv`, the served files under `/var/www`, and an nginx
+site file named without an extension.
 
-| | value used below |
+| | |
 |---|---|
-| user / group | `gatadocs` |
-| base directory | `/srv/gata-docs` |
-| domain | `docs.gatahub.zone` |
+| user / group | `docs` |
+| build workspace | `/srv/gata-docs` (private, `750`) |
+| published output | `/var/www/gata-docs` (`755`) |
+| nginx site | `/etc/nginx/sites-available/gata-docs` |
+| certificate name | `gata-docs` |
 | repo | `git@github.com:JoveCosmos/docs.git` |
 
+**Why the split between `/srv` and `/var/www`:** the repo, `node_modules` and the
+build workspace never need to be readable by nginx, so they stay at `750` under
+`/srv` like `explorer` and `gata-hub`. Only the finished static output is
+published under `/var/www`. `gata-landing` currently runs its build as root; this
+one does not.
+
 > [!IMPORTANT]
-> The SSH **private** key is generated on the server and never leaves it. Do not
-> commit it here or anywhere else — it is the server's identity. Only the
-> **public** half (`.pub`) is uploaded to GitHub, as a read-only deploy key.
+> The SSH **private** key is generated on the server and never leaves it. Only
+> the **public** half goes to GitHub, as a deploy key with write access off.
+> Nothing secret is committed to the repo.
 
 ---
 
 ## 1. Create the service user
 
-No password and no login shell — this account only ever runs the deploy script.
+```bash
+sudo adduser --system --group --home /srv/gata-docs --shell /usr/sbin/nologin docs
+```
+
+`--system` means no password and no ageing; `nologin` means nobody can get a
+shell as this user even if they find a way to authenticate as it.
 
 ```bash
-sudo adduser --system --group --shell /bin/bash --home /srv/gata-docs gatadocs
-sudo mkdir -p /srv/gata-docs/{repo,releases}
-sudo chown -R gatadocs:gatadocs /srv/gata-docs
-
-# nginx must be able to traverse into the release directories
-sudo chmod 755 /srv/gata-docs
+sudo mkdir -p /srv/gata-docs/repo /var/www/gata-docs/releases
+sudo chown -R docs:docs /srv/gata-docs /var/www/gata-docs
+sudo chmod 750 /srv/gata-docs
+sudo chmod 755 /var/www/gata-docs
 ```
 
 ## 2. Generate the deploy key
 
 ```bash
-sudo -u gatadocs ssh-keygen -t ed25519 -N "" \
-  -f /srv/gata-docs/.ssh/id_ed25519 \
-  -C "gatadocs@$(hostname) deploy key for docs.gatahub.zone"
-
-sudo -u gatadocs cat /srv/gata-docs/.ssh/id_ed25519.pub
+sudo -u docs mkdir -p /srv/gata-docs/.ssh && sudo chmod 700 /srv/gata-docs/.ssh
 ```
 
-Copy that one line of output.
-
-Then in GitHub: **repo → Settings → Deploy keys → Add deploy key**. Paste it,
-title it something like `docs server (pull only)`, and **leave "Allow write
-access" unchecked** — the server only ever needs to read.
-
-Trust GitHub's host key so the first fetch is not interactive:
-
 ```bash
-sudo -u gatadocs bash -c 'ssh-keyscan github.com >> /srv/gata-docs/.ssh/known_hosts'
-sudo -u gatadocs ssh -T git@github.com   # expect: "successfully authenticated"
+sudo -u docs ssh-keygen -t ed25519 -N "" -f /srv/gata-docs/.ssh/id_ed25519 -C "docs@$(hostname) deploy key"
 ```
 
-## 3. Install Node
-
-The build needs Node 20 or newer. If your other services already have it
-system-wide, skip this.
-
 ```bash
-node -v   # if this is missing or older than v20:
-curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo cat /srv/gata-docs/.ssh/id_ed25519.pub
 ```
 
-## 4. Clone and run the first build
+Copy that single line. In GitHub: **JoveCosmos/docs → Settings → Deploy keys →
+Add deploy key**. Title it `docs server (read only)`, paste the key, and **leave
+"Allow write access" unchecked**.
+
+Pre-trust GitHub's host key so the first fetch is not interactive:
 
 ```bash
-sudo -u gatadocs git clone git@github.com:JoveCosmos/docs.git /srv/gata-docs/repo
-sudo -u gatadocs /srv/gata-docs/repo/deploy/deploy.sh --force
+sudo -u docs bash -c 'ssh-keyscan -t ed25519 github.com >> /srv/gata-docs/.ssh/known_hosts'
 ```
 
-That should end with `now serving /srv/gata-docs/releases/...`. Confirm the
-symlink exists:
+Verify — expect `Hi JoveCosmos/docs! You've successfully authenticated`:
 
 ```bash
-ls -l /srv/gata-docs/current
+sudo -u docs ssh -i /srv/gata-docs/.ssh/id_ed25519 -o IdentitiesOnly=yes -T git@github.com
 ```
 
-## 5. nginx — get a certificate first
-
-nginx will not start if it is pointed at a certificate that does not exist yet,
-so install the HTTP-only block first.
+## 3. Clone and build
 
 ```bash
-sudo mkdir -p /var/www/certbot
+sudo -u docs git clone git@github.com:JoveCosmos/docs.git /srv/gata-docs/repo
+```
 
-sudo cp /srv/gata-docs/repo/deploy/nginx-bootstrap.conf \
-        /etc/nginx/sites-available/gata-docs
-sudo ln -sf /etc/nginx/sites-available/gata-docs /etc/nginx/sites-enabled/
+```bash
+sudo -u docs /srv/gata-docs/repo/deploy/deploy.sh --force
+```
+
+Expect it to end with `now serving /var/www/gata-docs/releases/...`. Confirm:
+
+```bash
+ls -l /var/www/gata-docs/current && ls /var/www/gata-docs/current | head
+```
+
+## 4. nginx — certificate first
+
+nginx will not start pointing at a certificate that does not exist, so install
+the HTTP-only block first.
+
+```bash
+sudo cp /srv/gata-docs/repo/deploy/nginx-bootstrap.conf /etc/nginx/sites-available/gata-docs
+sudo ln -sf /etc/nginx/sites-available/gata-docs /etc/nginx/sites-enabled/gata-docs
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Point `docs.gatahub.zone` at this server in DNS, wait for it to resolve, then:
+Confirm DNS resolves here before asking certbot for anything:
 
 ```bash
-sudo certbot certonly --webroot -w /var/www/certbot \
-  -d docs.gatahub.zone \
-  --agree-tos -m jovecosmos@gmail.com --no-eff-email
+echo "DNS: $(dig +short docs.gatahub.zone)  server: $(curl -s ifconfig.me)"
 ```
 
-Now swap in the real config:
+Issue the certificate. `--cert-name gata-docs` keeps the path predictable, the
+same way the apex uses `gata-landing`:
 
 ```bash
-sudo cp /srv/gata-docs/repo/deploy/nginx.conf \
-        /etc/nginx/sites-available/gata-docs
+sudo certbot certonly --webroot -w /var/www/html -d docs.gatahub.zone --cert-name gata-docs --agree-tos -m jovecosmos@gmail.com --no-eff-email
+```
+
+Swap in the real config:
+
+```bash
+sudo cp /srv/gata-docs/repo/deploy/nginx.conf /etc/nginx/sites-available/gata-docs
 sudo nginx -t && sudo systemctl reload nginx
 ```
 
-Certbot installs its own renewal timer. Confirm it works:
+Confirm renewal will work unattended:
 
 ```bash
 sudo certbot renew --dry-run
-systemctl list-timers | grep certbot
 ```
 
-## 6. Cron
+## 5. Cron
 
 ```bash
-sudo -u gatadocs crontab /srv/gata-docs/repo/deploy/crontab.example
-sudo -u gatadocs crontab -l
+sudo -u docs crontab /srv/gata-docs/repo/deploy/crontab.example
+sudo -u docs crontab -l
 ```
 
 Every 5 minutes it fetches; if the commit has not moved it exits silently, so
-the log only ever grows on a real deploy.
+the log only grows on a real deploy.
 
 ```bash
 tail -f /srv/gata-docs/deploy.log
 ```
 
-## 7. Verify end to end
+## 6. Verify
 
 ```bash
-curl -I https://docs.gatahub.zone            # 200, and HTTP/2
-curl -I http://docs.gatahub.zone             # 301 to https
-curl -s https://docs.gatahub.zone/g/gata-hub -o /dev/null -w '%{http_code}\n'  # 301, old GitBook URL
+curl -sI https://docs.gatahub.zone | head -1
 ```
 
-Then push a trivial change and watch it land within 5 minutes.
+```bash
+curl -s -o /dev/null -w 'http->https: %{http_code}\n' http://docs.gatahub.zone
+```
+
+Old GitBook URLs must still resolve — this is what is linked from Discord, X and
+partner sites:
+
+```bash
+curl -s -o /dev/null -w 'legacy: %{http_code}\n' https://docs.gatahub.zone/g/gata-hub
+```
+
+Security headers:
+
+```bash
+curl -sI https://docs.gatahub.zone | grep -iE 'content-security|strict-transport|x-content-type|referrer'
+```
+
+Then open the site and check that **search works** — it is the one feature that
+depends on `wasm-unsafe-eval` being present in the CSP.
+
+Finally, push a trivial change and confirm it lands within 5 minutes.
 
 ---
 
 ## Rolling back
 
-Releases are kept (5 by default). To go back to the previous one:
-
 ```bash
-ls -1dt /srv/gata-docs/releases/*/          # newest first
-sudo -u gatadocs ln -sfn /srv/gata-docs/releases/<previous> /srv/gata-docs/current.tmp
-sudo -u gatadocs mv -Tf /srv/gata-docs/current.tmp /srv/gata-docs/current
+ls -1dt /var/www/gata-docs/releases/*/
 ```
 
-No nginx reload needed — it follows the symlink.
+```bash
+sudo -u docs bash -c 'ln -sfn /var/www/gata-docs/releases/<previous> /var/www/gata-docs/current.tmp && mv -Tf /var/www/gata-docs/current.tmp /var/www/gata-docs/current'
+```
 
-Note that the next cron tick will redeploy whatever is on `main`, so roll back
-in git too if the bad commit is still there.
+No nginx reload needed. Note the next cron tick redeploys whatever is on `main`,
+so revert in git too if the bad commit is still there.
 
 ## Troubleshooting
 
-**Nothing deploys.** Check the log first: `tail /srv/gata-docs/deploy.log`. If it
-is empty, cron is not firing — `sudo -u gatadocs crontab -l` and `grep CRON
-/var/log/syslog`.
+**Nothing deploys.** `tail /srv/gata-docs/deploy.log`. If empty, cron is not
+firing: `sudo -u docs crontab -l`, then `grep CRON /var/log/syslog`.
 
-**`npm: not found` in the log.** Cron has a minimal PATH. The script already
-prepends the usual locations and sources nvm if present; if node lives somewhere
-else, set `PATH` at the top of the crontab.
+**`npm: not found` in the log.** Cron's PATH is minimal. The script prepends the
+usual locations already; if node moves, set `PATH` at the top of the crontab.
 
-**403 from nginx.** It cannot traverse the directories. Check
-`sudo -u www-data stat /srv/gata-docs/current/index.html`, then re-apply
-`chmod 755 /srv/gata-docs`.
+**403 from nginx.** It cannot traverse into the docroot. Check with
+`sudo -u www-data stat /var/www/gata-docs/current/index.html`, then re-apply
+`sudo chmod 755 /var/www/gata-docs`.
 
-**Stale content after a deploy.** `disable_symlinks off` must be present in the
-server block, otherwise nginx caches the resolved symlink target.
+**Stale content after a deploy.** `disable_symlinks off` must be in the server
+block, otherwise nginx caches the resolved symlink target.
+
+**Search returns nothing.** Pagefind runs as WebAssembly; if `wasm-unsafe-eval`
+is missing from `script-src` the browser console shows a CSP violation.

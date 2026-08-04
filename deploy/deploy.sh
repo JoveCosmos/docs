@@ -24,6 +24,10 @@ KEEP_RELEASES="${KEEP_RELEASES:-5}"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
+# `set -e` aborts with no output of its own, which makes a failed run look
+# identical to a quiet one in the log. Say what died and where.
+trap 'log "ERROR: failed at line $LINENO (exit $?)"' ERR
+
 # cron fires on a fixed interval regardless of how long a build takes, so take
 # an exclusive lock and exit quietly if a previous run is still going.
 exec 9>"$LOCK_FILE"
@@ -43,14 +47,14 @@ command -v npm >/dev/null 2>&1 || { log "ERROR: npm not on PATH"; exit 1; }
 
 cd "$REPO_DIR"
 
-log "fetching origin/$BRANCH"
+# Nothing is logged before this point: on the overwhelmingly common no-op run
+# the script must stay silent, or the log grows a line every 5 minutes forever.
 git fetch --quiet origin "$BRANCH"
 
 LOCAL="$(git rev-parse HEAD)"
 REMOTE="$(git rev-parse "origin/$BRANCH")"
 
 if [[ "$LOCAL" == "$REMOTE" && "${1:-}" != "--force" ]]; then
-  # quiet on the no-op path so cron does not mail every 5 minutes
   exit 0
 fi
 

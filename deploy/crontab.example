@@ -1,0 +1,16 @@
+# Crontab for the `gatadocs` user.
+#
+# Install with:  sudo -u gatadocs crontab deploy/crontab.example
+# Inspect with:  sudo -u gatadocs crontab -l
+#
+# deploy.sh exits immediately when the remote commit has not changed, and takes
+# an flock so a slow build never overlaps the next tick.
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# poll git every 5 minutes; log only real deploys and errors
+*/5 * * * * /srv/gata-docs/repo/deploy/deploy.sh >> /srv/gata-docs/deploy.log 2>&1
+
+# rebuild once after a reboot, in case a push landed while the box was down
+@reboot sleep 60 && /srv/gata-docs/repo/deploy/deploy.sh --force >> /srv/gata-docs/deploy.log 2>&1

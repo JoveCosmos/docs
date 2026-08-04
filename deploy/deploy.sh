@@ -14,10 +14,28 @@ set -euo pipefail
 REPO_DIR="${REPO_DIR:-/srv/gata-docs/repo}"
 RELEASES_DIR="${RELEASES_DIR:-/srv/gata-docs/releases}"
 CURRENT_LINK="${CURRENT_LINK:-/srv/gata-docs/current}"
+LOCK_FILE="${LOCK_FILE:-/srv/gata-docs/.deploy.lock}"
 BRANCH="${BRANCH:-main}"
 KEEP_RELEASES="${KEEP_RELEASES:-5}"
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
+
+# cron fires on a fixed interval regardless of how long a build takes, so take
+# an exclusive lock and exit quietly if a previous run is still going.
+exec 9>"$LOCK_FILE"
+if ! flock -n 9; then
+  log "another deploy is already running, skipping"
+  exit 0
+fi
+
+# cron runs with a minimal PATH that usually lacks node/npm
+export PATH="/usr/local/bin:/usr/bin:/bin:${PATH:-}"
+if ! command -v npm >/dev/null 2>&1; then
+  # pick up nvm's default install if that is how node was installed
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+fi
+command -v npm >/dev/null 2>&1 || { log "ERROR: npm not on PATH"; exit 1; }
 
 cd "$REPO_DIR"
 
@@ -28,7 +46,7 @@ LOCAL="$(git rev-parse HEAD)"
 REMOTE="$(git rev-parse "origin/$BRANCH")"
 
 if [[ "$LOCAL" == "$REMOTE" && "${1:-}" != "--force" ]]; then
-  log "already at ${REMOTE:0:8}, nothing to do"
+  # quiet on the no-op path so cron does not mail every 5 minutes
   exit 0
 fi
 
@@ -48,6 +66,9 @@ npm run build
 RELEASE="$RELEASES_DIR/$(date +%Y%m%d-%H%M%S)-${REMOTE:0:8}"
 mkdir -p "$RELEASE"
 cp -r dist/. "$RELEASE/"
+
+# nginx runs as its own user and only needs to read the built site
+chmod -R a+rX "$RELEASE"
 
 # atomic swap: create the new symlink beside the old one, then rename over it
 ln -sfn "$RELEASE" "$CURRENT_LINK.tmp"

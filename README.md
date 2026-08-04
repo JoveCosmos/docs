@@ -87,28 +87,22 @@ source repo is private, and there is no public "Edit page" link.
 
 ## Deployment
 
-Push to `main`; the server picks it up and rebuilds. See [`deploy/`](deploy/):
+Push to `main`; the server picks it up within 5 minutes and rebuilds.
+
+**First-time server setup: [`deploy/SETUP.md`](deploy/SETUP.md)** — service user,
+SSH deploy key, Node, nginx, certbot and cron, step by step.
+
+What is in [`deploy/`](deploy/):
 
 - `deploy.sh` — fetch, build into a timestamped release, then atomically flip the
-  `current` symlink. A failed build never touches the live site.
-- `nginx.conf` — server block serving `/srv/gata-docs/current`.
-- `gata-docs-deploy.{service,timer}` — systemd timer that polls git every 5 minutes.
+  `current` symlink. A failed build never touches the live site. Takes an flock
+  so overlapping cron ticks cannot collide.
+- `crontab.example` — polls git every 5 minutes; silent unless something changes.
+- `nginx-bootstrap.conf` — HTTP-only block, used once so certbot can issue the
+  first certificate.
+- `nginx.conf` — the real block, serving `/srv/gata-docs/current` over HTTPS.
 
-First-time server setup:
-
-```bash
-sudo mkdir -p /srv/gata-docs/{repo,releases}
-sudo chown -R deploy:deploy /srv/gata-docs
-sudo -u deploy git clone https://github.com/JoveCosmos/docs.git /srv/gata-docs/repo
-sudo -u deploy /srv/gata-docs/repo/deploy/deploy.sh --force
-
-sudo cp /srv/gata-docs/repo/deploy/nginx.conf /etc/nginx/sites-available/gata-docs
-sudo ln -s /etc/nginx/sites-available/gata-docs /etc/nginx/sites-enabled/
-sudo nginx -t && sudo systemctl reload nginx
-
-sudo cp /srv/gata-docs/repo/deploy/gata-docs-deploy.* /etc/systemd/system/
-sudo systemctl enable --now gata-docs-deploy.timer
-```
+Rollback and troubleshooting are covered at the end of `SETUP.md`.
 
 ## Legacy URLs
 

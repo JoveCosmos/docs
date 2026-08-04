@@ -73,7 +73,6 @@ export default defineConfig({
         { icon: "x.com", label: "X", href: "https://twitter.com/GataHubZone" },
         { icon: "discord", label: "Discord", href: "https://discord.com/invite/4MCrtaCetp" },
         { icon: "telegram", label: "Telegram", href: "https://t.me/gatahub" },
-        { icon: "github", label: "GitHub", href: "https://github.com/GATA-HUB" },
       ],
       components: {
         // two-state light/dark button in place of the Auto/Light/Dark <select>

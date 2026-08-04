@@ -11,11 +11,17 @@
     "astro": "astro",
     "convert": "node scripts/convert.mjs",
     "audit": "node scripts/audit.mjs",
-    "build:check": "astro build && node scripts/audit.mjs"
+    "build:check": "astro build && node scripts/audit.mjs",
+    "cms": "astro dev"
   },
   "dependencies": {
+    "@astrojs/react": "^6.0.2",
     "@astrojs/starlight": "^0.36.0",
+    "@keystatic/astro": "^5.2.0",
+    "@keystatic/core": "^0.6.4",
     "astro": "^5.15.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "sharp": "^0.34.0"
   },
   "allowScripts": {

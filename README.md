@@ -33,10 +33,46 @@ collapsible `<details>` blocks (used for the German translations).
 
 ### Adding or moving a page
 
-The sidebar is **not** hand-maintained. It is generated from
-[`scripts/structure.mjs`](scripts/structure.mjs), which is the single source of
-truth for page order, titles and grouping. To add a page, create the Markdown
-file and add an entry to `pages` in that file; to reorder, move the entry.
+Curated page order lives in [`scripts/structure.mjs`](scripts/structure.mjs). To
+place a page at an exact position in the sidebar, add an entry to `pages` there;
+to reorder, move the entry.
+
+Pages that are *not* listed there still appear: the config scans
+`src/content/docs/` at build time and appends anything unlisted to the end of its
+section, taking the label from the page's own `title`. That is what lets a page
+created in the admin CMS show up without a code change.
+
+## Admin CMS
+
+A visual editor for page title, description, sidebar position and body text,
+plus creating and deleting pages.
+
+```bash
+npm run cms
+```
+
+Then open <http://localhost:4321/keystatic>.
+
+It edits the Markdown files in `src/content/docs/` directly on disk. Save, then
+commit and push as usual — the server picks the change up on its next poll.
+
+**The CMS is local only.** It is mounted exclusively by `astro dev`; a production
+build never loads it, so the deployed site has no `/keystatic` route and no edit
+UI of any kind. The public cannot see or reach it because it is not there. The
+source repo is private, and there is no public "Edit page" link.
+
+> [!IMPORTANT]
+> Keystatic re-serialises the whole page body when it saves, so an edit can
+> reformat parts of the page you did not touch. The `markdoc` field was rejected
+> for exactly this reason — it rewrote standard Markdown tables into `{% table %}`
+> syntax, which Starlight would render as literal text. The `mdx` field is used
+> instead, but its round-trip has **not** been verified against this content yet.
+>
+> Until it has been: after your first save on a given page, run `git diff` and
+> check that only your intended change appears. Nothing reaches the site until
+> you push, so a bad round-trip is always caught locally.
+>
+> Editing the Markdown by hand has no such risk.
 
 ## Layout
 
@@ -63,7 +99,7 @@ First-time server setup:
 ```bash
 sudo mkdir -p /srv/gata-docs/{repo,releases}
 sudo chown -R deploy:deploy /srv/gata-docs
-sudo -u deploy git clone https://github.com/GATA-HUB/docs.git /srv/gata-docs/repo
+sudo -u deploy git clone https://github.com/JoveCosmos/docs.git /srv/gata-docs/repo
 sudo -u deploy /srv/gata-docs/repo/deploy/deploy.sh --force
 
 sudo cp /srv/gata-docs/repo/deploy/nginx.conf /etc/nginx/sites-available/gata-docs

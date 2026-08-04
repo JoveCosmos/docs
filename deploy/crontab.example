@@ -1,7 +1,7 @@
-# Crontab for the `gatadocs` user.
+# Crontab for the `docs` user.
 #
-# Install with:  sudo -u gatadocs crontab deploy/crontab.example
-# Inspect with:  sudo -u gatadocs crontab -l
+# Install with:  sudo -u docs crontab /srv/gata-docs/repo/deploy/crontab.example
+# Inspect with:  sudo -u docs crontab -l
 #
 # deploy.sh exits immediately when the remote commit has not changed, and takes
 # an flock so a slow build never overlaps the next tick.

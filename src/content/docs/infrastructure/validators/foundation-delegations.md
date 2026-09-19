@@ -25,3 +25,5 @@ The specifics of foundation delegation can vary among blockchain projects, with 
 | ICF                                   | Dec 2023 - June 2025    | OSMO  | 5K OSMO    | [Detailed decision ](https://drive.google.com/file/d/1OUkhvfk7-1-BWYjyYBAFlUn6ywu_P36f/view)                        |
 | Archway                               | August 2023- March 2024 | ARCH  | 3m ARCH    |                                                                                                                     |
 | [All in Bits](https://allinbits.com/) | March 2025              | ATONE | 160K ATONE | [Detailed Decision](https://allinbits.com/blog/aib-atone-delegation-program-cycle-1/)                               |
+| [All in Bits](https://allinbits.com/) | August 2026             | ATONE | 187K ATONE | [Details](https://github.com/allinbits/AiB-ATONE-Delegation-Program/blob/main/Cycle-II-Correction.md)                          |
+| ICF                                   | July 2026               | ATOM  | 226K ATOM  | [Details](https://docs.google.com/spreadsheets/d/1nQSTzn7WsoMgF21VH4zDHg7cWesYyT-VnVIwMbPfJ50/edit?gid=1320334182#gid=1320334182) |

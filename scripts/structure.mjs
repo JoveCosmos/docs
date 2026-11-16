@@ -37,7 +37,6 @@ export const pages = [
 
   { src: "gatahub/public-goods.md", out: "infrastructure/public-goods/index.md", title: "Public Goods" },
   { src: "gatahub/public-goods/gata-relays.md", out: "infrastructure/public-goods/relays.md", title: "IBC Relays" },
-  { src: "gatahub/public-goods/end-points.md", out: "infrastructure/public-goods/endpoints.md", title: "Public Endpoints" },
 
   // ------------------------------------------------------------ NFT collections
   {
